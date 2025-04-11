@@ -18,12 +18,10 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 });
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::post('/create', [FriendRequestController::class, 'create']);});
+    Route::post('/create', [FriendRequestController::class, 'create']);
+});
 
-    Route::group(['middleware' => ['auth:sanctum']], function () {
-        Route::put('/f/{id}', [FriendRequestController::class, 'update']);
-        Route::get('/f/received', [FriendRequestController::class, 'receivedRequests']);
-
-
-
-;});
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::put('/f/{id}', [FriendRequestController::class, 'update']);
+    Route::get('/f/received', [FriendRequestController::class, 'receivedRequests']);;
+});
