@@ -5,13 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\Friend;
 use App\Models\FriendRequest;
 use Illuminate\Http\Request;
-
+use app\Http\Controllers\Controller;
 
 class FriendRequestController extends Controller
 {
+    use Controller;
 
     public function create(Request $request)
     {
+
+
         $sender = auth()->user();
 
         $sender->load(['friendsOf', 'friends']);
@@ -53,9 +56,7 @@ class FriendRequestController extends Controller
             'status' => 'pending'
         ]);
 
-        return response()->json([
-            'massage' => 'succes.'
-        ]);
+        return $this->Success();
     }
 
     public function get_all()
@@ -112,9 +113,7 @@ class FriendRequestController extends Controller
                 'user_2' => $user1
             ]);
 
-            return response()->json([
-                'message' => 'درخواست دوستی با موفقیت پذیرفته شد و دوستی ثبت گردید.'
-            ], 200);
+            return $this->Success();
         }
     }
 

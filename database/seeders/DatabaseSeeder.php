@@ -15,24 +15,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        $user1 = User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-            'password' => Hash::make('password')
-        ]);
-
-        $user2 = User::factory()->create([
-            'name' => 'Test User2',
-            'email' => 'test2@example.com',
-            'password' => Hash::make('password')
-        ]);
-
-
-        Friend::query()->create([
-            'user_1' => $user1->id,
-            'user_2' => $user2->id,
+        $this->call([
+            UserSeeder::class,
+            // DebtSeeder::class,
+            // FriendSeeder::class,
         ]);
     }
 }
